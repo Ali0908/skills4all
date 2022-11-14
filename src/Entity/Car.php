@@ -39,7 +39,7 @@ class Car
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="cars")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
@@ -108,4 +108,5 @@ class Car
 
         return $this;
     }
+    
 }

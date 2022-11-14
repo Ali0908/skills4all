@@ -38,6 +38,18 @@ class CarRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    /**
+     *
+     * @return mixed
+     */
+    public function findCarsByName()
+    {
+        $results = $this->createQueryBuilder('c') 
+        ->orderBy('c.name', 'ASC') // On trie sur la propriété creditOrder
+        ->getQuery()
+        ->getResult();
+        return $results;
+    }
 
 //    /**
 //     * @return Car[] Returns an array of Car objects
