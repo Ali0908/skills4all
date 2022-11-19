@@ -24,6 +24,7 @@ class AppFixtures extends Fixture
         $car->setNbreSeats($faker->numberBetween(5, 7));
         $car->setNbreDoors($faker->numberBetween(3, 5));
         $car->setCost($faker->randomFloat(2, 1500, 3000));
+        $car->setCategory($carProvider->getRandomCategoriesName());
         $carsList[] = $car;
         $manager->persist($car);
     }
@@ -38,9 +39,9 @@ class AppFixtures extends Fixture
 
     // Relation between Car and Category
     foreach ($carsList as $key => $car) {
-        $nbMaxCategory = mt_rand(0, 4);
+        $nbMaxCategory = mt_rand(1, 4);
         for ($n=1; $n<=$nbMaxCategory; $n++) {
-            $car->setCategory($categoriesList[ mt_rand(0, count($categoriesList) - 1) ]);
+            $car->setCategory($categoriesList[ mt_rand(1, count($categoriesList) - 1) ]);
             $manager->persist($car);
         }
     }

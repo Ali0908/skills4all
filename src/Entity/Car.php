@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\CarRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,27 +19,32 @@ class Car
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups("api_car_list")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     *  @Groups("api_car_list")
      */
     private $nbreSeats;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("api_car_list")
      */
     private $nbreDoors;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("api_car_list")
      */
     private $cost;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="cars")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("api_car_list")
      */
     private $category;
 

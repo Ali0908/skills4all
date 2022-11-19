@@ -33,7 +33,6 @@
                 <table class="table table-dark">
                     <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Name</th>
                                 <th>NbreSeats</th>
                                 <th>NbreDoors</th>
@@ -46,15 +45,11 @@
             </div>
         {% for car in cars %}
             <tr>
-                <td>{{ car.id }}</td>
                 <td>{{ car.name }}</td>
                 <td>{{ car.nbreSeats }}</td>
                 <td>{{ car.nbreDoors }}</td>
                 <td>{{ car.cost }}</td>
-                {% if car.category %}
 				<td>{{car.category.name}}</td>
-				{% endif %}
-				</tr>
                 <td>
                     <a href class="bi bi-plus-circle-fill""{{ path('app_back_new') }}"></a>
                     <a href class="bi bi-eye-fill""{{ path('app_back_show', {'id': car.id}) }}"></a>

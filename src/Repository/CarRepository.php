@@ -44,11 +44,23 @@ class CarRepository extends ServiceEntityRepository
      */
     public function findCarsByName()
     {
-        $results = $this->createQueryBuilder('c') 
-        ->orderBy('c.name', 'ASC') // On trie sur la propriété creditOrder
+        $filterCarName = $this->createQueryBuilder('c') 
+        ->orderBy('c.name', 'ASC') 
         ->getQuery()
         ->getResult();
-        return $results;
+        return $filterCarName;
+    }
+    /**
+     *
+     * @return mixed
+     */
+    public function findCarsByCategoryName()
+    {
+        $filterCarsByCategoryName = $this->createQueryBuilder('c') 
+        ->orderBy('c.category', 'ASC')
+        ->getQuery()
+        ->getResult();
+        return $filterCarsByCategoryName;
     }
 
 //    /**
