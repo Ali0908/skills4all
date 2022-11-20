@@ -42,7 +42,7 @@ class CarRepository extends ServiceEntityRepository
      *
      * @return mixed
      */
-    public function findCarsByName()
+    public function findCarsByNameAsc()
     {
         $filterCarName = $this->createQueryBuilder('c') 
         ->orderBy('c.name', 'ASC') 
@@ -63,20 +63,19 @@ class CarRepository extends ServiceEntityRepository
         return $filterCarsByCategoryName;
     }
 
-//    /**
-//     * @return Car[] Returns an array of Car objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Car[] Returns an array of Car objects
+     */
+   public function findByCategory($category): array
+   {
+       return $this->createQueryBuilder('c')
+        ->andWhere('c.category = :cat')
+           ->setParameter('cat', $category)
+          ->orderBy('c.id', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+    }
 
 //    public function findOneBySomeField($value): ?Car
 //    {

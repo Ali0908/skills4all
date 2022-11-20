@@ -18,13 +18,12 @@ class AppFixtures extends Fixture
     $carProvider= new CarProvider();
     $faker = Faker\Factory::create('fr_FR');
     $carsList = [];
-    for ($i=1; $i<20; $i++) {
+    for ($i=1; $i<50; $i++) {
         $car= new Car();
         $car->setName($carProvider->getRandomCarName());
         $car->setNbreSeats($faker->numberBetween(5, 7));
         $car->setNbreDoors($faker->numberBetween(3, 5));
         $car->setCost($faker->randomFloat(2, 1500, 3000));
-        $car->setCategory($carProvider->getRandomCategoriesName());
         $carsList[] = $car;
         $manager->persist($car);
     }
@@ -40,8 +39,9 @@ class AppFixtures extends Fixture
     // Relation between Car and Category
     foreach ($carsList as $key => $car) {
         $nbMaxCategory = mt_rand(1, 4);
-        for ($n=1; $n<=$nbMaxCategory; $n++) {
-            $car->setCategory($categoriesList[ mt_rand(1, count($categoriesList) - 1) ]);
+        for ($n=0; $n<=$nbMaxCategory; $n++) {
+            $car->setCategory($categoriesList[ mt_rand(1, count($categoriesList) - 1
+            ) ]);
             $manager->persist($car);
         }
     }

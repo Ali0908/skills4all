@@ -15,7 +15,7 @@ searchBar.addEventListener('keyup', (e) => {
 
 const loadCars = async () => {
     try {
-        const res = await fetch('/list/');
+        const res = await fetch('http://localhost:8000/list');
         hpCars = await res.json();
         displayCars(hpCars);
     } catch (err) {
@@ -27,13 +27,13 @@ const displayCars = (cars) => {
     const htmlString = cars
         .map((car) => {
             return `
-              <tr>
+            <tr>
                 <th>${car.name}</th>
                 <th>${car.nbreSeats}</th>
                 <th>${car.nbreDoors}</th>
                 <th>${car.cost}</th>
                 <th>${car.category.name}</th>
-              <tr>
+            <tr>
         `;
         })
         .join('');

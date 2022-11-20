@@ -19,7 +19,6 @@
 				</div>
 			</div>
 		</nav>
-	<div class="filters">
 
 		<!-- banner -->
 			<div class="container section">
@@ -32,21 +31,20 @@
 				</div>
 			</div>
 		<!-- /banner -->
-		
-			<div class="row">
-				<select name="filter_group" class="filter">
-				{% for car in carList %}
-					<option value'{{car.category.name}}'={{car.category.name}}</option>
-				{% endfor %}
-				</select>
-			</div>
-	</div>
 	</header>
 	<!-- /header -->
 
 	<!-- topics -->
+
 	<section class="section">
-		<div class="container">
+<div class="btn-container">
+        <div class="filter-btns">
+        <!-- single-btn -->
+        <button class="btn" type="button" data-id="SUV">SUV</button>
+<button class="btn" type="button" data-id="Full Electric">Full Electric</button>
+		<button class="btn" type="button" data-id="Sportback">Sportback</button>
+		</div>
+</div>
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<h2 class="section-title">Find your car</h2>	
