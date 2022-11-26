@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
         $car->setName($carProvider->getRandomCarName());
         $car->setNbreSeats($faker->numberBetween(5, 7));
         $car->setNbreDoors($faker->numberBetween(3, 5));
-        $car->setCost($faker->randomFloat(2, 1500, 3000));
+        $car->setCost(sprintf($faker->randomFloat(2, 1500, 3000)));
         $carsList[] = $car;
         $manager->persist($car);
     }

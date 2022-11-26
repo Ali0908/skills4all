@@ -17,6 +17,23 @@
 							<a class="nav-link text-dark" href="{{ path('app_back_index') }}">Back Office</a>
 						</li>
 				</div>
+				<ul class="navbar-nav ml-auto">
+                        
+                            {# maintenant que l'on a l'auth on peut utiliser app.user #}
+                            {% if app.user == null %}
+                                <a class="btn btn-success btn-sm" href="{{ path('app_login')}}" id="navbarDropdown" role="button">Connexion</a>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="{{ path('app_logout')}}" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown">
+                                        <span>{{ app.user.email }}</span>
+                                        <i class="bi bi-person-square"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            
+
+                    </ul>
 			</div>
 		</nav>
 

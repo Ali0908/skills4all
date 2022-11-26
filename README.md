@@ -1,3 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const url = 'http://localhost:8000/display'
 const content = document.querySelector('#cars-table')
 const filterBtns = document.querySelectorAll('.btn')
