@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Back Office{% endblock %}
-
 {% block body %}
     	<!-- header -->
 	<header class="banner overlay bg-cover" data-background="images/banner.jpg">
@@ -51,10 +50,10 @@
                 <td>{{ car.cost }}</td>
 				<td>{{car.category.name}}</td>
                 <td>
-                    <a href class="{{ path('app_back_new') }}">Add</a>
-                    <a href class="{{ path('app_back_show', {'id': car.id}) }}">Show</a>
-                    <a href class="{{ path('app_back_edit', {'id': car.id}) }}">Edit</a>
-                    <a href class="{{ path('app_back_delete', {'id': car.id}) }}">Delete</a>
+                    <a href="{{ path('app_back_new') }}"class="link-secondary bi bi-plus-circle"></a>
+                    <a href="{{ path('app_back_show', {'id': car.id}) }}"class="link-secondary bi bi-eye white"></a>
+                    <a href="{{ path('app_back_edit', {'id': car.id}) }}"class="link-secondary bi bi-pencil-square"></a>
+                    <a href="{{ path('app_back_delete', {'id': car.id}) }}"class="link-secondary bi bi-trash"></a>
                 </td>
             </tr>
         {% endfor %}

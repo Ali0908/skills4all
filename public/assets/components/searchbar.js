@@ -13,6 +13,7 @@ searchBar.addEventListener('keyup', (e) => {
     displayCars(filteredCars);
 });
 
+
 const loadCars = async () => {
     try {
         const res = await fetch('http://localhost:8000/list');

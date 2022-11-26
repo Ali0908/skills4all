@@ -1,62 +1,45 @@
-const url = 'http://localhost:8000/display'
-const content = document.querySelector('#cars-table')
-const filterBtns = document.querySelectorAll('.btn')
+const carTable = document.getElementById('cars-table');
+const suvButton = document.querySelector("#SUV")
+let hpCarsbySuvCategory = [];
 
-const fetchData = async () => {
-  try {
-    const response = await fetch(url)
-    const data = await response.json();
-    
-
-    let data_results = [];
-    
-    if (response.status === 200) {
-    filterBtns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-        let id = e.target.dataset.id.toUpperCase()
-        data_results = data.filter((car) => {
-            let res = car
-            
-            
-            if (res.name.includes(id)) {
-            return res
-            }
-          })
-          
-         
-          output = filterResults(data_results);
-          content.innerHTML = output;
-        })
-      })
+function suvfunction(){
+  const loadCarsbyCategories = async () => {
+    try {
+        const res = await fetch('http://localhost:8000/list');
+        hpCars = await res.json();
+        displayCarsbyCategories(hpCarsbySuvCategory);
+    } catch (err) {
+        console.error(err);
     }
-  } catch (error) {
-    console.log(error)
-  }
+  };
 }
+suvButton.addEventListener('click', suvfunction,false);
+  // const suvButtonString = e.target.value.toLowerCase();
+  // const filteredCarsbySuvCategory = hpCarsbySuvCategory.filter((car) => {
+  //     return (
+  //         car.name.toLowerCase().includes(suvButtonString)
+  //     ); 
+  //   });
+  //     displayCarsbyCategories(filteredCarsbySuvCategory);  
+});
 
-fetchData()
 
-{
-  /* <h3>${result.videos[0].embed}</h3> */
-}
 
-// Take results, map them to our cards and return them.
-function filterResults(data_results) {
-  let output = data_results.map((result) => {
-        return `<article class="card">
-        <div class="info">
-        <h2><i class="fas fa-spinner fa-pulse"></i> Match: ${car.category.name}</h2>
-        <div class="details">
-        <p>${car.name}</p>
-        <p>${car.nbreSeats}</p>
-        <p>${car.nbreDoors}</p>
-        <p>${car.cost}</p>
-        <p>${car.category.name}</p>
-        </div>
-        </div>
-        </article>
-        `
-      });
-  output = output.join(' ')
-  return output;
-}
+const displayCarsbyCategories = (cars) => {
+  const htmlString = cars
+      .map((car) => {
+          return `
+          <tr>
+              <th>${car.name}</th>
+              <th>${car.nbreSeats}</th>
+              <th>${car.nbreDoors}</th>
+              <th>${car.cost}</th>
+              <th>${car.category.name}</th>
+          <tr>
+      `;
+      })
+      .join('');
+  carTable.innerHTML = htmlString;
+};
+
+suvfunction();
