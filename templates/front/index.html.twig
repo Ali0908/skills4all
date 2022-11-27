@@ -21,7 +21,7 @@
                         
                             {# maintenant que l'on a l'auth on peut utiliser app.user #}
                             {% if app.user == null %}
-                                <a class="btn btn-success btn-sm" href="{{ path('app_login')}}" id="navbarDropdown" role="button">Connexion</a>
+                                <a class="btn btn-outline-light" href="{{ path('app_login')}}" id="navbarDropdown" role="button">Connexion</a>
                             {% else %}
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="{{ path('app_logout')}}" id="navbarDropdown" role="button"
@@ -31,9 +31,7 @@
                                     </a>
                                 </li>
                             {% endif %}
-                            
-
-                    </ul>
+                </ul>
 			</div>
 		</nav>
 
@@ -43,8 +41,16 @@
 						<div class="filter_search bar position-relative">
 							<input type="search" id="search"  class="form-control" placeholder="Search a car"><i
 								class="ti-search search-icon"></i>
-						</div>
-					
+						</div>	
+				</div>
+
+				<div class="filter-btns">
+					<!-- single-btn -->	
+					<button class="btn btn-outline-light" type="button" id="SUV">SUV</button>
+					<button  class="btn btn-outline-light" type="button" id="Full_Electric">Full Electric</button>
+					<button  class="btn btn-outline-light" type="button" id="Sportback">Sportback</button>
+					<button  class="btn btn-outline-light" type="button" id="All">All</button>
+					</div>
 				</div>
 			</div>
 		<!-- /banner -->
@@ -52,23 +58,15 @@
 	<!-- /header -->
 
 	<!-- topics -->
-
+		<div class="btn-container">
 	<section class="section">
-<div class="btn-container">
-        <div class="filter-btns">
-        <!-- single-btn -->
-		
-        <button class="btn" type="button" id="SUV">SUV</button>
-		<button  class="btn" type="button" id="Full_Electric">Full Electric</button>
-		<button  class="btn" type="button" id="Sportback">Sportback</button>
-		</div>
-</div>
+
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<h2 class="section-title">Find your car</h2>	
 				</div>
-			<div class="row">
-			
+
+			<div class="row">		
 			<table>
 					<thead>
 					<tr>
@@ -83,8 +81,6 @@
 					</tbody>
 			</table>
 		</div>
-
-
-	</section>
+</section>
 	<!-- /topics -->
 {% endblock %}
