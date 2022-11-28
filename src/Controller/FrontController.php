@@ -23,7 +23,7 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/list", name="list", methods={"GET"})
+     * @Route("index.php/list", name="list", methods={"GET"})
      * 
      */
     public function listCarsByName(CarRepository $carRepository): JsonResponse
