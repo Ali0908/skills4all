@@ -8,7 +8,7 @@ let hpSuvCar = [];
 //Data recovery
 const loadCarsbySuvCategory = async () => {
   try {
-      const res = await fetch('index.php/list');
+      const res = await fetch('/list');
       hpSuvCar = await res.json();
       displayCarsbySuvCategory(hpSuvCar);
   } catch (err) {
