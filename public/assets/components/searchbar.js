@@ -16,7 +16,7 @@ searchBar.addEventListener('keyup', (e) => {
 
 const loadCars = async () => {
     try {
-        const res = await fetch('/list');
+        const res = await fetch('index.php/list');
         hpCars = await res.json();
         displayCars(hpCars);
     } catch (err) {
