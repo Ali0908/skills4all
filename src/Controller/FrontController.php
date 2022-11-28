@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+/**
+ * @Route("/index.php")
+ */
 class FrontController extends AbstractController
 {
     /**
@@ -23,7 +25,7 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("index.php/list", name="list", methods={"GET"})
+     * @Route("/list", name="list", methods={"GET"})
      * 
      */
     public function listCarsByName(CarRepository $carRepository): JsonResponse
