@@ -12,9 +12,9 @@ class UserFixture extends Fixture implements FixtureGroupInterface
     {
         $user = new User();
         $user->setEmail('admin@admin.com');
+        //$user->setPassword('papa');
         $user->setPassword('$2y$13$soeHaB5gd2nAhY.soYkIwumzdsv3c8r7aWOucLVhm9GHYYCw1gxCa');
         $user->setRoles(['ROLE_ADMIN']);
-        //admin        
         $manager->persist($user);
 
         $manager->flush();
