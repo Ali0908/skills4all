@@ -1,7 +1,8 @@
+//retrieve HTML elements
 const carList = document.getElementById('cars-table');
 const searchBar = document.getElementById('search');
 let hpCars = [];
-
+// Setting up a listening event
 searchBar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
 
@@ -13,7 +14,7 @@ searchBar.addEventListener('keyup', (e) => {
     displayCars(filteredCars);
 });
 
-
+//Data recovery
 const loadCars = async () => {
     try {
         const res = await fetch('index.php/list');
@@ -23,7 +24,7 @@ const loadCars = async () => {
         console.error(err);
     }
 };
-
+// Dissemination of modified data in the DOM
 const displayCars = (cars) => {
     const htmlString = cars
         .map((car) => {
