@@ -19,7 +19,7 @@
             var rows = "";
             for (var i = startIndex; i < endIndex; i++) {
                 if (data[i]) {
-                rows += "<tr><td>" + data[i].name + "</td><td>" + data[i].nbreSeats + "</td><td>" + data[i].nbreDoors + "</td><td>" + data[i].cost + "</td>€<td>" + data[i].category.name;
+                rows += "<tr><td>" + data[i].name + "</td><td>" + data[i].nbreSeats + "</td><td>" + data[i].nbreDoors + "</td><td>" + data[i].cost + "</td><td>" + data[i].category.name;
                 }
             }
             $("#cars-table").html(rows);
