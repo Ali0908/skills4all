@@ -76,5 +76,9 @@
         {% endfor %}
         </tbody>
     </table>
+    	<div class="d-flex justify-content-center">
+        {% do cars.setPageRange(2) %}
+        {{ knp_pagination_render(cars,'pagination.html.twig') }}
+            </div>
 
 {% endblock %}

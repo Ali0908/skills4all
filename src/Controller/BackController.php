@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Form\CarType;
 use App\Repository\CarRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,20 @@ class BackController extends AbstractController
     /**
      * @Route("/", name="app_back_index", methods={"GET"})
      */
-    public function index(CarRepository $carRepository): Response
+    public function index(
+        PaginatorInterface $paginator,
+        Request $request,
+        CarRepository $carRepository): Response
     {
+        $cars =  $carRepository->findAll();
+        $pagination = $paginator->paginate(
+            $cars, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
+    
         return $this->render('back/index.html.twig', [
-            'cars' => $carRepository->findAll(),
+            'cars' => $pagination,
         ]);
     }
 

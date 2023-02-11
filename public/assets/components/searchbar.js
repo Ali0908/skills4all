@@ -17,7 +17,7 @@ searchBar.addEventListener('keyup', (e) => {
 //Data recovery
 const loadCars = async () => {
     try {
-        const res = await fetch('index.php/list');
+        const res = await fetch('/list');
         hpCars = await res.json();
         displayCars(hpCars);
     } catch (err) {
@@ -43,3 +43,4 @@ const displayCars = (cars) => {
 };
 
 loadCars();
+
