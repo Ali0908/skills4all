@@ -5,8 +5,7 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Form\CarType;
 use App\Repository\CarRepository;
-use ContainerSu2VISK\PaginatorInterface_82dac15;
-use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,26 +19,23 @@ class BackController extends AbstractController
     /**
      * @Route("/", name="app_back_index", methods={"GET"})
      */
-    public function index(CarRepository $carRepository): Response
+    public function index(
+        PaginatorInterface $paginator,
+        Request $request,
+        CarRepository $carRepository): Response
     {
-        return $this->render('back/index.html.twig', [
-            'cars' => $carRepository->findAll(),
-        ]);
-    }
-    public function listAction(EntityManagerInterface $em, PaginatorInterface_82dac15 $paginator, Request $request)
-    {
-        $dql   = "SELECT * FROM Car";
-        $query = $em->createQuery($dql);
-    
+        $cars =  $carRepository->findAll();
         $pagination = $paginator->paginate(
-            $query, /* query NOT result */
+            $cars, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             10 /*limit per page*/
         );
     
-        // parameters to template
-        return $this->render('back/list.html.twig', ['pagination' => $pagination]);
+        return $this->render('back/index.html.twig', [
+            'cars' => $pagination,
+        ]);
     }
+
     /**
      * @Route("/new", name="app_back_new", methods={"GET", "POST"})
      */

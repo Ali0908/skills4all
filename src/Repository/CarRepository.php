@@ -50,32 +50,7 @@ class CarRepository extends ServiceEntityRepository
         ->getResult();
         return $filterCarName;
     }
-    /**
-     *
-     * @return mixed
-     */
-    public function findCarsByCategoryName()
-    {
-        $filterCarsByCategoryName = $this->createQueryBuilder('c') 
-        ->orderBy('c.category', 'ASC')
-        ->getQuery()
-        ->getResult();
-        return $filterCarsByCategoryName;
-    }
 
-    /**
-     * @return Car[] Returns an array of Car objects
-     */
-   public function findByCategory($category): array
-   {
-       return $this->createQueryBuilder('c')
-        ->andWhere('c.category = :cat')
-           ->setParameter('cat', $category)
-          ->orderBy('c.id', 'ASC')
-           ->getQuery()
-           ->getResult()
-       ;
-    }
 
 //    public function findOneBySomeField($value): ?Car
 //    {

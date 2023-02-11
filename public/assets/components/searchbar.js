@@ -24,7 +24,6 @@ const loadCars = async () => {
     }
 };
 
-console.log(pagination);
 const displayCars = (cars) => {
     const htmlString = cars
         .map((car) => {
