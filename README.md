@@ -15,3 +15,6 @@
 
 # Users
 -> Rajouter des utilisateurs comme le manager qui pourra voir et modifier les infos d'une voiture.
+
+# Création d'un formulaire pour la création d'un compte utilisateur
+https://www.youtube.com/watch?v=d8-C-U7Jn_c
